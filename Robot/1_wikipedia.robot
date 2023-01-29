@@ -3,6 +3,7 @@ Library    SeleniumLibrary
 Test Setup  OPWIKI
 Test Teardown   Close Browser
 *** Variables ***
+${project_path}    C:\Users\vdi-student\Desktop\screens
 ${wikipedia_login}  RobotTest
 ${wikipedia_password}  RobotFramework
 ${Wikipedia}    https://pl.wikipedia.org/
@@ -11,7 +12,7 @@ ${error_message}   Podany login lub hasło są nieprawidłowe. Spróbuj jeszcze 
 
 *** Keywords ***
 OPWIKI
-    Open Browser    ${Wikipedia}   Edge
+    Open Browser    ${Wikipedia}   Edge  executable_path=C:\Program Files (x86)\Microsoft\Edge\Application\109.0.1518.61\msedge.exe
 LOG
     [Arguments]    ${Login}    ${Password}
 
