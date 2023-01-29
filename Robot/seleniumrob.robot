@@ -5,17 +5,13 @@ Library  SeleniumLibrary
 @{emails}  email1  email2  email3  email4  email5
 @{passwords}  pass1  pass2  pass3  pass4  pass5
 
-*** Keywords ***
+*** Test Cases ***
 Registration In Forum
     [Arguments]  ${email}  ${password}
-    open browser    https://gotujmy.pl/forum/  Chrome  #executable_path=C:/chromedriver/chromedriver.exe
-    Sleep  3
+    open browser    https://gotujmy.pl/forum/  Edge
     run keyword and ignore error  click button    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
-    Sleep  3
     click element    //*[@id="navTop"]/nav/ul[1]/li[2]/a
-    Sleep  3
     run keyword and ignore error  click button    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
-    Sleep  3
     input text    //*[@id="f_cmu_email"]    ${email}
     input text    //*[@id="f_cmu_email2"]    ${email}
     input text    //*[@id="f_cmu_password"]    ${password}
