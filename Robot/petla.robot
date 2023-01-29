@@ -29,6 +29,26 @@ For Loop in List
     FOR   ${item}   IN    @{list_of_numbers}
         IF    ${item} == 3    Log    ${item}
     END
+
+For Loop1
+    FOR  ${name}  IN    @{imiona}
+        IF   $name == 'Augusto'  Log   ${name}
+    END
+
+For Loop2
+    @{my_list}  create list   Mama  Tata    Pies    Kot   Ptak   I coś jeszcze
+    FOR    ${name}  IN   @{my_list}
+        IF  $name == 'Pies'   BREAK
+        Log   ${name}
+     END
+
+For Loop3
+    @{my_list}  create list   Mama  Tata    Pies    Kot   Ptak   I coś jeszcze
+    FOR    ${name}  IN   @{my_list}
+        IF  $name == 'Pies'   CONTINUE
+        Log   ${name}
+     END
+
 For Loop In Range 10
     FOR    ${i}    IN RANGE    10
         Log    ${i}

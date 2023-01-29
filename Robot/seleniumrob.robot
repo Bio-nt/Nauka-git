@@ -35,7 +35,7 @@ Registration In Forum
     ${my_message}  Get Text    //*[id="main_content"]/div/div/h1
     Log To Console    ${my_message}
     Should Be Equal As Strings   ${my_message}   ${message}
-    capture page screenshot    #${project_path}/screen1.png
+    capture page screenshot    ${project_path}/screen1.png
 
 *** Test Cases ***
 Registration of Multiple User
