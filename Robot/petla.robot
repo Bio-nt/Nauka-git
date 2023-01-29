@@ -1,3 +1,4 @@
+
 *** Variables ***
 ${string}    piesek
 @{list}    pierwszy    drugi    trzeci    czwarty    piaty
@@ -48,6 +49,13 @@ For Loop3
         IF  $name == 'Pies'   CONTINUE
         Log   ${name}
      END
+
+While loop
+    ${index}   set variable  10
+    WHILE   ${index} > 0
+        Log   ${index}
+        ${index}  evaluate  ${index} - 1
+    END
 
 For Loop In Range 10
     FOR    ${i}    IN RANGE    10
