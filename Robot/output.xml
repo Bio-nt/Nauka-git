@@ -1,70 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.1 on win32)" generated="20230129 13:17:31.084" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.1 on win32)" generated="20230129 13:46:53.826" rpa="false" schemaversion="3">
 <suite id="s1" name="Apitest" source="C:\Users\piimb\PycharmProjects\Nauka-git\robot\apitest.robot">
 <test id="s1-t1" name="API_GET_TEST 1" line="10">
 <kw name="GET" library="RequestsLibrary">
 <var>${get_response}</var>
 <arg>https://simple-books-api.glitch.me/status</arg>
 <doc>Sends a GET request.</doc>
-<msg timestamp="20230129 13:17:32.146" level="INFO">GET Request : url=https://simple-books-api.glitch.me/status 
+<msg timestamp="20230129 13:46:55.163" level="INFO">GET Request : url=https://simple-books-api.glitch.me/status 
  path_url=/status 
  headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20230129 13:17:32.146" level="INFO">GET Response : url=https://simple-books-api.glitch.me/status 
+<msg timestamp="20230129 13:46:55.163" level="INFO">GET Response : url=https://simple-books-api.glitch.me/status 
  status=200, reason=OK 
- headers={'Date': 'Sun, 29 Jan 2023 12:17:31 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '15', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"f-v/Y1JusChTxrQUzPtNAKycooOTA"'} 
+ headers={'Date': 'Sun, 29 Jan 2023 12:46:54 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '15', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"f-v/Y1JusChTxrQUzPtNAKycooOTA"'} 
  body={"status":"OK"} 
  </msg>
-<msg timestamp="20230129 13:17:32.147" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230129 13:17:31.427" endtime="20230129 13:17:32.147"/>
+<msg timestamp="20230129 13:46:55.164" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230129 13:46:54.157" endtime="20230129 13:46:55.164"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>status ${get_response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230129 13:17:32.148" endtime="20230129 13:17:32.149"/>
+<status status="PASS" starttime="20230129 13:46:55.165" endtime="20230129 13:46:55.167"/>
 </kw>
-<status status="PASS" starttime="20230129 13:17:31.426" endtime="20230129 13:17:32.150"/>
+<status status="PASS" starttime="20230129 13:46:54.156" endtime="20230129 13:46:55.168"/>
 </test>
-<test id="s1-t2" name="POST_REGISTRATION" line="14">
+<test id="s1-t2" name="API_GET_books" line="14">
+<kw name="GET" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>https://simple-books-api.glitch.me/books</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230129 13:46:55.777" level="INFO">GET Request : url=https://simple-books-api.glitch.me/books 
+ path_url=/books 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230129 13:46:55.778" level="INFO">GET Response : url=https://simple-books-api.glitch.me/books 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 29 Jan 2023 12:46:55 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '417', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"1a1-MfqhfTYtZO2sguD1mJq8Vf41WjU"'} 
+ body=[{"id":1,"name":"The Russian","type":"fiction","available":true},{"id":2,"name":"Just as I Am","type":"non-fiction","available":false},{"id":3,"name":"The Vanishing Half","type":"fiction","available":true},{"id":4,"name":"The Midnight Library","type":"fiction","available":true},{"id":5,"name":"Untamed","type":"non-fiction","available":true},{"id":6,"name":"Viscount Who Loved Me","type":"fiction","available":true}] 
+ </msg>
+<msg timestamp="20230129 13:46:55.778" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230129 13:46:55.173" endtime="20230129 13:46:55.778"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>status ${get_response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230129 13:46:55.779" endtime="20230129 13:46:55.780"/>
+</kw>
+<status status="PASS" starttime="20230129 13:46:55.171" endtime="20230129 13:46:55.781"/>
+</test>
+<test id="s1-t3" name="ORDER" line="23">
 <kw name="Create Dictionary" library="BuiltIn">
-<var>${register_json}</var>
-<arg>clientname=kamil33</arg>
-<arg>clientEmail=kammil33@example.com</arg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${token}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230129 13:17:32.154" level="INFO">${register_json} = {'clientname': 'kamil33', 'clientEmail': 'kammil33@example.com'}</msg>
-<status status="PASS" starttime="20230129 13:17:32.153" endtime="20230129 13:17:32.154"/>
+<msg timestamp="20230129 13:46:55.785" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer 06b94026900aa2b3e09e103e8d6d25718ad638910545ba08529420f708404731'}</msg>
+<status status="PASS" starttime="20230129 13:46:55.784" endtime="20230129 13:46:55.785"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${order_body}</var>
+<arg>bookId=4</arg>
+<arg>customerName=kamildd</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230129 13:46:55.786" level="INFO">${order_body} = {'bookId': '4', 'customerName': 'kamildd'}</msg>
+<status status="PASS" starttime="20230129 13:46:55.786" endtime="20230129 13:46:55.786"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
-<var>${post_register_response}</var>
-<arg>https://simple-books-api.glitch.me/api-clients/</arg>
-<arg>json=${register_json}</arg>
+<var>${post_order_response}</var>
+<arg>https://simple-books-api.glitch.me/orders</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${order_body}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20230129 13:17:32.840" level="INFO">POST Request : url=https://simple-books-api.glitch.me/api-clients/ 
- path_url=/api-clients/ 
- headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '64', 'Content-Type': 'application/json'} 
- body=b'{"clientname": "kamil33", "clientEmail": "kammil33@example.com"}' 
+<msg timestamp="20230129 13:46:56.660" level="INFO">POST Request : url=https://simple-books-api.glitch.me/orders 
+ path_url=/orders 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer 06b94026900aa2b3e09e103e8d6d25718ad638910545ba08529420f708404731', 'Content-Length': '42'} 
+ body=b'{"bookId": "4", "customerName": "kamildd"}' 
  </msg>
-<msg timestamp="20230129 13:17:32.840" level="INFO">POST Response : url=https://simple-books-api.glitch.me/api-clients/ 
- status=400, reason=Bad Request 
- headers={'Date': 'Sun, 29 Jan 2023 12:17:32 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '43', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"2b-l89yYcoVfVJGBAfpD4IpCK5y/wA"'} 
- body={"error":"Invalid or missing client name."} 
+<msg timestamp="20230129 13:46:56.660" level="INFO">POST Response : url=https://simple-books-api.glitch.me/orders 
+ status=201, reason=Created 
+ headers={'Date': 'Sun, 29 Jan 2023 12:46:56 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '50', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"32-/VHaSQR8zngnXqbWYlTCMo0eZs0"'} 
+ body={"created":true,"orderId":"Ptm3pjuAjf0FNP8b5Ak-k"} 
  </msg>
-<msg timestamp="20230129 13:17:32.841" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://simple-books-api.glitch.me/api-clients/</msg>
-<status status="FAIL" starttime="20230129 13:17:32.155" endtime="20230129 13:17:32.845"/>
+<msg timestamp="20230129 13:46:56.661" level="INFO">${post_order_response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230129 13:46:55.787" endtime="20230129 13:46:56.661"/>
 </kw>
-<status status="FAIL" starttime="20230129 13:17:32.152" endtime="20230129 13:17:32.846">HTTPError: 400 Client Error: Bad Request for url: https://simple-books-api.glitch.me/api-clients/</status>
+<status status="PASS" starttime="20230129 13:46:55.783" endtime="20230129 13:46:56.662"/>
 </test>
-<status status="FAIL" starttime="20230129 13:17:31.088" endtime="20230129 13:17:32.849"/>
+<status status="PASS" starttime="20230129 13:46:53.830" endtime="20230129 13:46:56.666"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="1" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="1" skip="0" id="s1" name="Apitest">Apitest</stat>
+<stat pass="3" fail="0" skip="0" id="s1" name="Apitest">Apitest</stat>
 </suite>
 </statistics>
 <errors>
